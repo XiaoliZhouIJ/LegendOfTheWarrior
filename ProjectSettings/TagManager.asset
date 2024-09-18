@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Gound
+  - Player
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Envirenment_Back
+    uniqueID: 1259673541
+    locked: 0
+  - name: Envirenment_Middle
+    uniqueID: 2899435323
+    locked: 0
+  - name: Charactor
+    uniqueID: 2579111997
+    locked: 0
+  - name: Envirenment_Front
+    uniqueID: 3037140119
+    locked: 0
