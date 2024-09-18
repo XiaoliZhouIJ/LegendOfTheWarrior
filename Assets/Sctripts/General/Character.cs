@@ -8,6 +8,9 @@ public class Character : MonoBehaviour
     [Header("基本属性")]
     public float maxHealth;
     public float currentHealth;
+    public float maxPower;
+    public float currentPower;
+    public float powerRecoverSpeed;
 
     [Header("受伤无敌")]
     public float invulnerableDuration;
@@ -19,12 +22,13 @@ public class Character : MonoBehaviour
     public UnityEvent<Transform> OnDie;
 
     [Header("事件")]
-    public UnityEvent<Character> OnHealthChange;
+    public UnityEvent<Character> OnStateChange;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        OnHealthChange?.Invoke(this);
+        currentPower = maxPower;
+        OnStateChange?.Invoke(this);
     }
 
     private void Update()
@@ -38,6 +42,11 @@ public class Character : MonoBehaviour
                 inculnerable = false;
             }
         }
+
+        if (currentPower < maxPower)
+        {
+            currentPower += Time.deltaTime * powerRecoverSpeed;
+        }
     }
 
 
@@ -46,7 +55,7 @@ public class Character : MonoBehaviour
         if (inculnerable) return;
 
         currentHealth -= attacker.damage;
-        if(currentHealth > 0)
+        if (currentHealth > 0)
         {
             TriggerInvuanerable();
             // 受伤
@@ -60,7 +69,7 @@ public class Character : MonoBehaviour
             OnDie?.Invoke(attacker.transform);
         }
 
-        OnHealthChange?.Invoke(this);
+        OnStateChange?.Invoke(this);
     }
 
     private void TriggerInvuanerable()
@@ -72,4 +81,28 @@ public class Character : MonoBehaviour
         }
     }
 
+    public bool OnSlide(int cost)
+    {
+        if (PowerCost(cost))
+        {
+            OnStateChange?.Invoke(this);
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+        
+    }
+
+    private bool PowerCost(int cost)
+    {
+        if (currentPower < cost)
+            return false;
+
+        currentPower -= cost;
+
+        return true;
+    }
 }

@@ -37,6 +37,8 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("isCrouch", playerController.isCrouch);
         animator.SetBool("isDead",playerController.isDead);
         animator.SetBool("isAttack",playerController.isAttack);
+        animator.SetBool("isOnWall", physicsCheck.isOnWall);
+        animator.SetBool("isSlide", playerController.isSlide);
     }
 
     public void PlayerFlash()

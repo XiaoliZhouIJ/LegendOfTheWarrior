@@ -385,7 +385,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_10
+      name: Blue_Slide_1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -406,7 +406,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_11
+      name: Blue_Slide_1_2
       rect:
         serializedVersion: 2
         x: 56
@@ -427,7 +427,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_12
+      name: Blue_Slide_1_3
       rect:
         serializedVersion: 2
         x: 112
@@ -448,7 +448,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_13
+      name: Blue_Slide_2_1
       rect:
         serializedVersion: 2
         x: 168
@@ -469,7 +469,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_14
+      name: Blue_Slide_2_2
       rect:
         serializedVersion: 2
         x: 224
@@ -490,7 +490,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_blue_2_15
+      name: Blue_Slide_2_3
       rect:
         serializedVersion: 2
         x: 280
@@ -1033,6 +1033,12 @@ TextureImporter:
       Blue_Attack_3_6: -1211624391
       Blue_Attack_3_7: -2083260961
       Blue_Attack_3_8: -313541453
+      Blue_Slide_1_1: -34634718
+      Blue_Slide_1_2: 1970521922
+      Blue_Slide_1_3: 1640838458
+      Blue_Slide_2_1: -706467363
+      Blue_Slide_2_2: -1384741118
+      Blue_Slide_2_3: 1868365662
       Blue_Walk_1: 1077674089
       Blue_Walk_10: 566744815
       Blue_Walk_2: -1522690651
@@ -1047,12 +1053,6 @@ TextureImporter:
       Blue_WallSlide_2: -248336886
       Blue_WallSlide_3: -244141714
       Blue_WallSlide_4: -1657627346
-      char_blue_2_10: -34634718
-      char_blue_2_11: 1970521922
-      char_blue_2_12: 1640838458
-      char_blue_2_13: -706467363
-      char_blue_2_14: -1384741118
-      char_blue_2_15: 1868365662
       char_blue_2_16: 1489591001
       char_blue_2_17: -1378246830
       char_blue_2_30: 487872469

@@ -6,7 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [Header("事件监听")]
-    public CharacterEventSO healthEvent;
+    public CharacterEventSO statehEvent;
 
     [Header("组件")]
     public PlayerStateBar playerStateBar;
@@ -14,19 +14,20 @@ public class UIManager : MonoBehaviour
     // 注册事件
     private void OnEnable()
     {
-        healthEvent.OnEventRaised += OnHealthEvent;
+        statehEvent.OnEventRaised += OnStateEvent;
     }
 
     // 注销事件
     private void OnDisable()
     {
-        healthEvent.OnEventRaised -= OnHealthEvent;
+        statehEvent.OnEventRaised -= OnStateEvent;
     }
 
-    private void OnHealthEvent(Character character)
+    private void OnStateEvent(Character character)
     {
         float persentage =  character.currentHealth / character.maxHealth;
 
         playerStateBar.OnHealthChange(persentage);
+        playerStateBar.OnPowerChange(character);
     }
 }

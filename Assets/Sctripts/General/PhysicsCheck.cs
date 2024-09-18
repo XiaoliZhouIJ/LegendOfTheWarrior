@@ -6,12 +6,19 @@ public class PhysicsCheck : MonoBehaviour
 {
     // 组件
     private CapsuleCollider2D capsuleCollider;
+    private PlayerController playerController;
+    private Rigidbody2D rb;
+
+    [Header("玩家状态")]
+    public bool isPlayer;
+    
 
     [Header("检测状态")]
     public bool manuralCheck;
     public bool isGround;
     public bool isTouchLeftWall;
     public bool isTouchRightWall;
+    public bool isOnWall;
 
     [Header("地面、墙面检测参数")]
     public Vector2 bottonOffset;
@@ -25,12 +32,16 @@ public class PhysicsCheck : MonoBehaviour
     {
         // 获取组件
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
 
-        if (!manuralCheck )
+        if (!manuralCheck)
         {
             leftOffset = new Vector2(-capsuleCollider.bounds.size.x / 2 + capsuleCollider.offset.x, capsuleCollider.offset.y);
-            rightOffset = new Vector2( capsuleCollider.bounds.size.x / 2 + capsuleCollider.offset.x, capsuleCollider.offset.y);
+            rightOffset = new Vector2(capsuleCollider.bounds.size.x / 2 + capsuleCollider.offset.x, capsuleCollider.offset.y);
         }
+
+        if (isPlayer)
+            playerController = GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -39,16 +50,27 @@ public class PhysicsCheck : MonoBehaviour
     }
     public void Check()
     {
+
+
         // 检测地面
-        isGround = Physics2D.OverlapCircle((Vector2)transform.position + bottonOffset, checkRadius, groundLayer);
+        if (isOnWall)
+        {
+            isGround = Physics2D.OverlapCircle((Vector2)transform.position + bottonOffset, checkRadius, groundLayer);
+        }
+        else
+        {
+            isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(bottonOffset.x, 0F), checkRadius, groundLayer);
+        }
 
         // 检测墙面
         isTouchLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRadius, groundLayer);
         isTouchRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRadius, groundLayer);
 
-
-        // 检测墙面
-        // isOnWall
+        // 检测是否在墙面上
+        if (isPlayer)
+            isOnWall = ((isTouchLeftWall && playerController.inputDirection.x < 0) || 
+                        (isTouchRightWall && playerController.inputDirection.x > 0)) && 
+                         rb.velocity.y < 0F;
     }
 
     /// <summary>

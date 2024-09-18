@@ -1262,11 +1262,19 @@ MonoBehaviour:
   isAttack: 0
   isHurt: 0
   isDead: 0
+  isWallJump: 0
+  isSlide: 0
   inputDirection: {x: 0, y: 0}
   speed: 300
   jumpForce: 16.5
-  buyao: 0
+  wallJumpForce: 30
+  normal: {fileID: 6200000, guid: 62deaff2e06a2634f8c93139cf45a469, type: 2}
+  wall: {fileID: 6200000, guid: cf6bfd9637e3ad643b0a4de2ffb60155, type: 2}
+  NONEED: 0
   hurtForce: 8
+  slideDistance: 4.5
+  slideSpeed: 0.3
+  slidePowerCost: 5
 --- !u!114 &475510083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,11 +1287,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4180089446354283b4b0ecec4310d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   manuralCheck: 0
   isGround: 0
   isTouchLeftWall: 0
   isTouchRightWall: 0
-  bottonOffset: {x: -0.05, y: 0}
+  isOnWall: 0
+  bottonOffset: {x: -0.05, y: 0.1}
   leftOffset: {x: -0.35, y: 0.85}
   rightOffset: {x: 0.25, y: 0.85}
   checkRadius: 0.1
@@ -1337,6 +1347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  maxPower: 15
+  currentPower: 0
+  powerRecoverSpeed: 1.2
   invulnerableDuration: 3
   inculnerable: 0
   OnTakeDamage:
@@ -1381,7 +1394,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHealthChange:
+  OnStateChange:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: a80406200d8cb5445928114b0564b5aa, type: 2}
@@ -1786,7 +1799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &886546921
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2173,7 +2186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1068671566
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2383,6 +2396,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 15
   currentHealth: 0
+  maxPower: 0
+  currentPower: 0
+  powerRecoverSpeed: 0
   invulnerableDuration: 0
   inculnerable: 0
   OnTakeDamage:
@@ -2427,7 +2443,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnHealthChange:
+  OnStateChange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1068671574
@@ -2489,10 +2505,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee4180089446354283b4b0ecec4310d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   manuralCheck: 0
   isGround: 0
   isTouchLeftWall: 0
   isTouchRightWall: 0
+  isOnWall: 0
   bottonOffset: {x: -0.88, y: 0}
   leftOffset: {x: -1.2, y: 0.6}
   rightOffset: {x: 0.6, y: 0.6}
@@ -7879,7 +7897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e278ddf1a820d0b49bdf3d2b914672c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthEvent: {fileID: 11400000, guid: a80406200d8cb5445928114b0564b5aa, type: 2}
+  statehEvent: {fileID: 11400000, guid: a80406200d8cb5445928114b0564b5aa, type: 2}
   playerStateBar: {fileID: 1617692697}
 --- !u!1 &1317239027
 GameObject:
@@ -8606,7 +8624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1765106575
 Transform:
   m_ObjectHideFlags: 0
