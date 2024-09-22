@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bounds
+  - Water
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - Gound
   - Player
   - Enemy
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -52,4 +55,7 @@ TagManager:
     locked: 0
   - name: Envirenment_Front
     uniqueID: 3037140119
+    locked: 0
+  - name: UI
+    uniqueID: 105750297
     locked: 0
